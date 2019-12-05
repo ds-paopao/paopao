@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czxy.paopao.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.czxy.paopao.domain.User">
+    <!--@mbg.generated generated on Mon Dec 02 17:35:57 CST 2019.-->
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="passowrd" jdbcType="VARCHAR" property="passowrd" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="real_id" jdbcType="VARCHAR" property="realId" />
+    <result column="head_photo" jdbcType="VARCHAR" property="headPhoto" />
+  </resultMap>
+</mapper>
