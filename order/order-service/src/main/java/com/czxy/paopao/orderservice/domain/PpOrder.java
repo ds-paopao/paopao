@@ -3,21 +3,23 @@ package com.czxy.paopao.orderservice.domain;
 import lombok.Data;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-        /**
-         * Created 路程很长 请别轻易失望 on 2019/12/5.  
-         * @author Keep On Running
-         */
+/**
+ * Created 路程很长 请别轻易失望 on 2019/12/5.
+ *
+ * @author Keep On Running
+ */
 @Data
 @Table(name = "pp_order")
 public class PpOrder {
     /**
      * 订单id
-
      */
-    @Column(name = "oid")
+    @Id
+    @Column(name ="oid")
     private String oid;
 
     /**
@@ -28,33 +30,32 @@ public class PpOrder {
 
     /**
      * 接单人
-
      */
     @Column(name = "lansquenet")
     private String lansquenet;
 
     /**
      * 状态码
-	0-取消订单
-	1-进行中
-	2-完成任务代交付
-	3-已完结
+     * 0-取消订单
+     * 1-进行中
+     * 2-完成任务代交付
+     * 3-已完结
      */
     @Column(name = "`state`")
     private Integer state;
 
     /**
      * 发单人是否显示
-	0-删除
-	1-显示
+     * 0-删除
+     * 1-显示
      */
     @Column(name = "show_one")
     private Integer showOne;
 
     /**
      * 接单人是否删除
-	0-删除
-	1-显示
+     * 0-删除
+     * 1-显示
      */
     @Column(name = "show_two")
     private Integer showTwo;
@@ -70,4 +71,16 @@ public class PpOrder {
      */
     @Column(name = "end_time")
     private Date endTime;
+
+    public PpOrder() {
+    }
+
+    public PpOrder(String xsId, String lansquenet, Integer state, Integer showOne, Integer showTwo, Date createTime) {
+        this.xsId = xsId;
+        this.lansquenet = lansquenet;
+        this.state = state;
+        this.showOne = showOne;
+        this.showTwo = showTwo;
+        this.createTime = createTime;
+    }
 }

@@ -1,4 +1,4 @@
-package com.czxy.paopao.commons.dto;
+package com.czxy.paopao.commons.dto.order;
 
 import lombok.Data;
 
