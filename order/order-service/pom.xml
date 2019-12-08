@@ -138,7 +138,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.czxy.paopao.order-service.OrderServiceApplication</mainClass>
+                    <mainClass>com.czxy.paopao.orderservice.OrderServiceApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
