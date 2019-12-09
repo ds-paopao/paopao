@@ -121,19 +121,20 @@
         <!-- Projects Begin -->
         <dependency>
             <groupId>com.czxy</groupId>
-            <artifactId>commons</artifactId>
+            <artifactId>order-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.czxy</groupId>
-            <artifactId>commons-dto</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.5</version>
+
+
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.2.14.Final</version>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.1.8</version>
         </dependency>
         <!-- Projects End -->
     </dependencies>

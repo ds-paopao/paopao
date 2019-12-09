@@ -1,6 +1,6 @@
 spring:
   application:
-    name: order
+    name: pp-order
   main:
     allow-bean-definition-overriding: true
   jackson:
