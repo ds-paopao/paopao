@@ -2,7 +2,6 @@
     <div class="home">
         <el-container>
 
-
             <el-container>
                 <el-header>
                     <el-row>
@@ -32,8 +31,6 @@
                             </div>
                         </el-col>
                     </el-row>
-
-
                 </el-header>
                 <el-main>
                     <router-view/>

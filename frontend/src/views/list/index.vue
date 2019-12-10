@@ -4,16 +4,15 @@
             <div style="margin-top: 15px;">
                 <el-input placeholder="请输入要搜索的悬赏名 或者店铺" v-model="key" class="input-with-select">
 
-                    <el-button slot="append"  type="primary" style="color: white;background-color: #1E89E0" icon="el-icon-search">搜索</el-button>
+                    <el-button slot="append" type="primary" style="color: white;background-color: #1E89E0"
+                               icon="el-icon-search">搜索
+                    </el-button>
                 </el-input>
-
                 <el-tabs type="border-card">
                     <el-tab-pane label="默认排序">
                         <el-card :body-style="{ padding: '0px' }" class="item-card" v-for=" i in 5">
 
                             <!--                            <img src="~examples/assets/images/hamburger.png" class="image">-->
-
-
                             <el-row>
                                 <el-col :span="6"><img src="../../assets/logo.png" class="image"/></el-col>
                                 <el-col :span="15">
@@ -29,7 +28,6 @@
                                         <div class="xs-item">悬赏地址</div>
 
 
-
                                     </el-row>
 
 
@@ -37,10 +35,10 @@
 
                                 <el-col :span="3">
 
-                                   <el-row style="height: 100px">
+                                    <el-row style="height: 100px">
 
-                                   </el-row>
-                                        <el-button type="primary" icon="el-icon-goods"  class="button">查看悬赏</el-button>
+                                    </el-row>
+                                    <el-button type="primary" icon="el-icon-goods" class="button">查看悬赏</el-button>
 
                                 </el-col>
                             </el-row>
@@ -81,7 +79,7 @@
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
             }
-        },data() {
+        }, data() {
             return {
                 key: ''
             }
