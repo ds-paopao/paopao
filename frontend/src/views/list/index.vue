@@ -4,7 +4,7 @@
             <div style="margin-top: 15px;">
                 <el-input placeholder="请输入要搜索的悬赏名 或者店铺" v-model="key" class="input-with-select">
 
-                    <el-button slot="append"  type="primary" icon="el-icon-search">搜索</el-button>
+                    <el-button slot="append"  type="primary" style="color: white;background-color: #1E89E0" icon="el-icon-search">搜索</el-button>
                 </el-input>
 
                 <el-tabs type="border-card">
@@ -15,9 +15,10 @@
 
 
                             <el-row>
-                                <el-col :span="4"><img src="../../assets/logo.png" class="image"/></el-col>
-                                <el-col :span="17">
+                                <el-col :span="6"><img src="../../assets/logo.png" class="image"/></el-col>
+                                <el-col :span="15">
                                     <el-row><h3 class="xs-item">标题</h3></el-row>
+
                                     <el-row>
                                         <div class="xs-item">悬赏地址</div>
                                     </el-row>
@@ -49,7 +50,7 @@
 
                         <el-pagination
                                 style="margin-top: 10px"
-                                @size-change="1"
+                                @size-change="handleSizeChange"
                                 @current-change="handleCurrentChange"
                                 :current-page="1"
                                 :page-sizes="[100, 200, 300, 400]"
@@ -72,7 +73,15 @@
 <script>
     export default {
         name: "index"
-        , data() {
+        ,
+        methods: {
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+            }
+        },data() {
             return {
                 key: ''
             }

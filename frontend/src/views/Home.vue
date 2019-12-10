@@ -6,12 +6,15 @@
             <el-container>
                 <el-header>
                     <el-row>
-                        <el-col :span="16">
+                        <el-col :span="4" class="logo">
+                            <img src="@/assets/logo.png" width="150px" height="50px">
+                        </el-col>
+                        <el-col :span="12">
                             <div style="width: 60%;margin: auto 0">
                                 <menus></menus>
                             </div>
                         </el-col>
-                        <el-col :span="5">
+                        <el-col :span="5" class="login">
                             <el-dropdown v-if="isLogin">
                       <span class="el-dropdown-link">
                        <img src="@/assets/logo.png" width="30px" height="30px" style="border-radius:50%;"><i
@@ -25,21 +28,8 @@
                                 </el-dropdown-menu>
                             </el-dropdown>
                             <div v-else>
-                                <a @click.prevent="openLogin = true">登录</a>
+                                <a @click.prevent="openLogin = true" href="#">登录/注册</a>
                             </div>
-                        </el-col>
-                        <el-col :span="3">
-                            <el-menu class="el-menu-vertical-demo" :collapse="isCollapse">
-                                <el-row style="height: 100%">
-                                    <el-col span="5" style="height: 100%;background: #504D53">
-
-                                    </el-col>
-
-                                    <el-col span="19" style="background: #1E89E0">
-
-                                    </el-col>
-                                </el-row>
-                            </el-menu>
                         </el-col>
                     </el-row>
 
@@ -50,7 +40,7 @@
                 </el-main>
                 <el-footer>Footer</el-footer>
             </el-container>
-            <el-aside width="20px" style="z-index: 100">
+           <!-- <el-aside width="50px" style="z-index: 100">
                 <div style="height: 40%"></div>
                 <div class="car" @click="clickOpen">
                     <div>购</div>
@@ -58,10 +48,33 @@
                     <div>车</div>
                     <el-icon icon="el-icon-sold-out"></el-icon>
                 </div>
-            </el-aside>
+            </el-aside>-->
         </el-container>
-        <scroll-top></scroll-top>
-        <Login :isLogin="isLogin" :loginForm="openLogin"></Login>
+        <el-backtop :bottom="100">
+
+        </el-backtop>
+        <el-dialog :title="isLogin ? '登录' : '注册'" :visible.sync="openLogin">
+            <el-form>
+                <el-form-item label="手机号" :label-width="100">
+                    <el-input v-model="user.phone" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" :label-width="100">
+                    <el-input v-model="user.password" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item v-if="!isLogin" label="验证码" :label-width="100">
+                    <el-input autocomplete="off" v-model="user.code" style="width: 300px;float: left"></el-input>
+                    <verifyCode></verifyCode>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <div style="float: left">
+                    <el-link type="primary" href="/forgotPwd" style="margin-right: 20px">忘记密码?</el-link>
+                    <el-link type="primary" @click="isLogin = !isLogin">{{isLogin ? '注册' : '登录'}}</el-link>
+                </div>
+                <el-button @click="openLogin = false">取 消</el-button>
+                <el-button type="primary" @click="login()">确 定</el-button>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
@@ -70,6 +83,7 @@
     import menu from '@/components/menu'
     import ScrollTop from '@/components/scroll'
     import Login from '@/components/Login'
+    import verifyCode from '@/components/VerifyCode.vue'
 
     export default {
         name: 'home',
@@ -77,22 +91,52 @@
             return {
                 openLogin: false,
                 isLogin: false,
-                isCollapse: true
+                isCollapse: true,
+                user: {}
             }
         },
         methods: {
+            async login() {
+                let {data} = await this.$axios.get("/user/login", this.user);
+                if (data.code == 1) {
+                    this.$message({
+                        showClose: true,
+                        message: '登录成功',
+                        type: 'success'
+                    });
+                    this.isLogin = true;
+                    this.openLogin = false;
+                } else {
+                    this.$message({
+                        showClose: true,
+                        message: '账号或密码错误',
+                        type: 'error'
+                    });
+                }
+            },
             clickOpen() {
                 this.isCollapse = !this.isCollapse;
+            },
+            changLoginForm(val) {
+                this.openLogin = val;
+            },
+            changLogin(val) {
+                this.isLogin = val;
             }
         },
         components: {
             Login,
             menus: menu,
             'scroll-top': ScrollTop,
+            verifyCode
         }
     }
 </script>
 <style>
+    a{
+        text-decoration: none;
+        color: white;
+    }
     .car {
         margin: auto 0;
         color: #ffffff;
@@ -102,6 +146,15 @@
         background-color: #504D53;
         color: #333;
         text-align: center;
+    }
+    .page-component__scroll{
+        height: 100%;
+    }
+    .el-scrollbar__wrap {
+        overflow-x: hidden;
+    }
+    .page-component__scroll .el-scrollbar__wrap {
+        overflow-x: auto;
     }
 
     .el-dropdown {
@@ -159,6 +212,10 @@
         height: 100%;
         margin: 0 auto;
     }
-
-
+    .logo{
+        margin-left: 20%;
+    }
+    .login{
+        margin-left: -23%;
+    }
 </style>

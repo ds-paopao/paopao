@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
 
          <el-menu
                  style="width: 100%"
@@ -10,7 +10,6 @@
                  background-color="#1E89E0"
                  text-color="#fff"
                  active-text-color="#ffd04b">
-             <el-menu-item index="1"><img src="@/assets/logo.png" width="150px" height="50px"></el-menu-item>
 
              <el-menu-item index="3">悬赏列表</el-menu-item>
              <el-menu-item index="4">订单列表</el-menu-item>
@@ -40,7 +39,7 @@
 
 <style scoped>
     .el-menu{
-        margin-left: 50%;
+        /*margin-left: 0%;*/
         float: none;
        /*margin-left: -1%;*/
         width: 600px;
