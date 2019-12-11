@@ -16,27 +16,30 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/ForgotPassword.vue')
     },
     {
-    path: '/',
-    name: 'home',
+        path: '/',
+        name: 'home',
 
-    component: Home,
-    children:[
-      {
-        path: '/home/list',
-        name: 'list',
-        component: () => import( '../views/list/index')
-      }
-    ]
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+        component: Home,
+        children:[
+            {
+                path: '/',
+                name: 'list',
+                component: () => import( '../views/list/index')
+            },
+            {
+                path: '/home/oderList',
+                name: 'oderList',
+                component: () => import( '../views/oderList/index')
+            },
+            {
+                path: '/Addxs',
+                name: 'Addxs',
+                component: () => import( '../views/Addxs/index')
+            }
+        ]
+    }
 ]
+
 
 const router = new VueRouter({
   mode: 'history',

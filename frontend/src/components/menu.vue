@@ -13,11 +13,9 @@
                  active-text-color="#ffd04b">
 
              <el-menu-item index="/">悬赏列表</el-menu-item>
-             <el-menu-item index="/OderList">进行中悬赏</el-menu-item>
+             <el-menu-item index="/home/oderList">进行中悬赏</el-menu-item>
              <el-menu-item index="/Addxs">发布悬赏</el-menu-item>
          </el-menu>
-
-
     </div>
 </template>
 
