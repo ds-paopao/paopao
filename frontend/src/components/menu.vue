@@ -3,16 +3,18 @@
 
          <el-menu
                  style="width: 100%"
-                 :default-active="3"
+                 :default-active="$route.path"
                  class="el-menu-demo"
                  mode="horizontal"
                  @select="handleSelect"
                  background-color="#1E89E0"
                  text-color="#fff"
+                 :router="true"
                  active-text-color="#ffd04b">
 
-             <el-menu-item index="3">悬赏列表</el-menu-item>
-             <el-menu-item index="4">订单列表</el-menu-item>
+             <el-menu-item index="/">悬赏列表</el-menu-item>
+             <el-menu-item index="/OderList">进行中悬赏</el-menu-item>
+             <el-menu-item index="/Addxs">发布悬赏</el-menu-item>
          </el-menu>
 
 

@@ -1,28 +1,30 @@
 <template>
     <div class="home">
         <el-container>
-
-
             <el-container>
                 <el-header>
                     <el-row>
+                        <!-- logo start -->
                         <el-col :span="4" class="logo">
                             <img src="@/assets/logo.png" width="150px" height="50px">
                         </el-col>
+                        <!-- logo end -->
+                        <!-- 导航栏 start -->
                         <el-col :span="12">
                             <div style="width: 60%;margin: auto 0">
                                 <menus></menus>
                             </div>
                         </el-col>
+                        <!-- 导航栏 end -->
+                        <!-- 登录头像 start -->
                         <el-col :span="5" class="login">
                             <el-dropdown v-if="isLogin">
                       <span class="el-dropdown-link">
-                       <img src="@/assets/logo.png" width="30px" height="30px" style="border-radius:50%;"><i
-                              class="el-icon-arrow-down el-icon--right"></i>
+                           <el-avatar icon="el-icon-user-solid" style="margin-top: 10px"></el-avatar>
                       </span>
                                 <el-dropdown-menu slot="dropdown">
                                     <el-dropdown-item>个人信息</el-dropdown-item>
-                                    <el-dropdown-item>我的订单</el-dropdown-item>
+                                    <el-dropdown-item>历史订单</el-dropdown-item>
                                     <el-dropdown-item>我的悬赏</el-dropdown-item>
                                     <el-dropdown-item divided>退出登录</el-dropdown-item>
                                 </el-dropdown-menu>
@@ -31,28 +33,38 @@
                                 <a @click.prevent="openLogin = true" href="#">登录/注册</a>
                             </div>
                         </el-col>
+                        <!-- 登录头像 end -->
                     </el-row>
 
-
                 </el-header>
+
+
                 <el-main>
                     <router-view/>
                 </el-main>
-                <el-footer>Footer</el-footer>
+
+                <el-footer>
+                    Footer
+                </el-footer>
             </el-container>
-           <!-- <el-aside width="50px" style="z-index: 100">
-                <div style="height: 40%"></div>
-                <div class="car" @click="clickOpen">
-                    <div>购</div>
-                    <div>物</div>
-                    <div>车</div>
-                    <el-icon icon="el-icon-sold-out"></el-icon>
-                </div>
-            </el-aside>-->
+            <!-- <el-aside width="50px" style="z-index: 100">
+                 <div style="height: 40%"></div>
+                 <div class="car" @click="clickOpen">
+                     <div>购</div>
+                     <div>物</div>
+                     <div>车</div>
+                     <el-icon icon="el-icon-sold-out"></el-icon>
+                 </div>
+             </el-aside>-->
         </el-container>
+
+        <!-- 回到顶部组件 start -->
         <el-backtop :bottom="100">
 
         </el-backtop>
+        <!-- 回到顶部组件 end -->
+
+        <!-- 登录组件 start -->
         <el-dialog :title="isLogin ? '登录' : '注册'" :visible.sync="openLogin">
             <el-form>
                 <el-form-item label="手机号" :label-width="100">
@@ -75,6 +87,7 @@
                 <el-button type="primary" @click="login()">确 定</el-button>
             </div>
         </el-dialog>
+        <!-- 登录组件 end -->
     </div>
 </template>
 
@@ -133,10 +146,11 @@
     }
 </script>
 <style>
-    a{
+    a {
         text-decoration: none;
         color: white;
     }
+
     .car {
         margin: auto 0;
         color: #ffffff;
@@ -147,12 +161,15 @@
         color: #333;
         text-align: center;
     }
-    .page-component__scroll{
+
+    .page-component__scroll {
         height: 100%;
     }
+
     .el-scrollbar__wrap {
         overflow-x: hidden;
     }
+
     .page-component__scroll .el-scrollbar__wrap {
         overflow-x: auto;
     }
@@ -207,15 +224,16 @@
 
 
     .box-card {
-
         width: 60%;
         height: 100%;
         margin: 0 auto;
     }
-    .logo{
+
+    .logo {
         margin-left: 20%;
     }
-    .login{
-        margin-left: -23%;
+
+    .login {
+        margin-left: -20%;
     }
 </style>
