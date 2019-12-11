@@ -12,12 +12,15 @@
                 <!--sta订单列表-->
                 <div style="height: 1039px">
                     <el-table
+                            :show-overflow-tooltip="true"
                             :stripe="true"
                             :data="orders"
-                            style="width: 100%">
-                        <el-table-column  type="expand" >
+                            style="width: 100%"
+                            :highlight-current-row="true"
+                            :default-expand-all="true">
+                        <el-table-column type="expand">
                             <template slot-scope="order">
-                                <el-form  label-position="left" inline class="demo-table-expand">
+                                <el-form label-position="left" inline class="demo-table-expand">
                                     <el-form-item label="订单详情">
                                         <span>{{ order.row.xs.context}}</span>
                                     </el-form-item>
@@ -33,20 +36,28 @@
                                 </el-form>
                             </template>
                         </el-table-column>
-                      <div>
-                          <el-table-column
-                                  label="悬赏简述"
-                                  prop="xs.brief">
-                          </el-table-column>
-                          <el-table-column
-                                  label="交付地点"
-                                  prop="xs.address">
-                          </el-table-column>
-                          <el-table-column
-                                  label="限时"
-                                  prop="xs.endTime">
-                          </el-table-column>
-                      </div>
+                        <div>
+                            <el-table-column
+                                    type="index"
+                                    width="50">
+                            </el-table-column>
+                            <el-table-column
+                                    width="80">
+                                <i class="el-icon-s-custom"></i>
+                            </el-table-column>
+                            <el-table-column
+                                    label="悬赏简述"
+                                    prop="xs.brief">
+                            </el-table-column>
+                            <el-table-column
+                                    label="交付地点"
+                                    prop="xs.address">
+                            </el-table-column>
+                            <el-table-column
+                                    label="限时"
+                                    prop="xs.endTime">
+                            </el-table-column>
+                        </div>
                     </el-table>
                 </div>
                 <!--end订单列表-->
@@ -55,6 +66,9 @@
 
 
         </el-card>
+
+        <div>
+        </div>
     </div>
 </template>
 
@@ -81,12 +95,12 @@
                         state: 1,
                         uid: '发布悬赏人的id',
                         address: '520宿舍2号床',
-                        user:{
-                            nickname:'吴彦祖',
-                            phone:'13313131414'
+                        user: {
+                            nickname: '吴彦祖',
+                            phone: '13313131414'
                         }
                     }
-                },{
+                }, {
                     oid: '订单的id',
                     xsId: '悬赏表的id',
                     lansquenet: '接单人的id',
@@ -105,12 +119,12 @@
                         state: 1,
                         uid: '发布悬赏人的id',
                         address: '520宿舍2号床',
-                        user:{
-                            nickname:'吴彦祖',
-                            phone:'13313131414'
+                        user: {
+                            nickname: '吴彦祖',
+                            phone: '13313131414'
                         }
                     }
-                },{
+                }, {
                     oid: '订单的id',
                     xsId: '悬赏表的id',
                     lansquenet: '接单人的id',
@@ -129,12 +143,12 @@
                         state: 1,
                         uid: '发布悬赏人的id',
                         address: '520宿舍2号床',
-                        user:{
-                            nickname:'吴彦祖',
-                            phone:'13313131414'
+                        user: {
+                            nickname: '吴彦祖',
+                            phone: '13313131414'
                         }
                     }
-                },{
+                }, {
                     oid: '订单的id',
                     xsId: '悬赏表的id',
                     lansquenet: '接单人的id',
@@ -153,9 +167,9 @@
                         state: 1,
                         uid: '发布悬赏人的id',
                         address: '520宿舍2号床',
-                        user:{
-                            nickname:'吴彦祖',
-                            phone:'13313131414'
+                        user: {
+                            nickname: '吴彦祖',
+                            phone: '13313131414'
                         }
                     }
                 }]
