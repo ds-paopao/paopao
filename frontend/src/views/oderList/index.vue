@@ -1,16 +1,17 @@
 <template>
     <div>
+        <!-- todo 正在进行中的悬赏,默认查找订单,状态为1-->
         <el-card class="box-card">
             <div style="margin-top: 15px;">
                 <!--sta搜索框-->
-                <el-input placeholder="搜索我的订单" v-model="key" class="input-with-select">
+                <el-input placeholder="搜索" v-model="pageRequest.searchKey" class="input-with-select">
                     <el-button slot="append" type="primary" style="color: white;background-color: #1E89E0"
                                icon="el-icon-search">搜索
                     </el-button>
                 </el-input>
                 <!--end搜索框-->
                 <!--sta订单列表-->
-                <div style="height: 1039px">
+                <div style="height: 900px">
                     <el-table
                             :show-overflow-tooltip="true"
                             :stripe="true"
@@ -24,8 +25,15 @@
                                     <el-form-item label="订单详情">
                                         <span>{{ order.row.xs.context}}</span>
                                     </el-form-item>
+                                    <el-form-item>
+                                        <span v-if="order.row.state==1"><el-button size="mini"  type="success" round>进行中...</el-button>
+                                        </span>
+                                    </el-form-item>
                                     <el-form-item label="预计价格">
                                         <span>{{ order.row.xs.price }}</span>
+                                    </el-form-item>
+                                    <el-form-item label="图片">
+                                        <span>{{order.row.productphoto}}</span>
                                     </el-form-item>
                                     <el-form-item label="悬赏用户">
                                         <span>{{ order.row.xs.user.nickname }}</span>
@@ -59,6 +67,16 @@
                             </el-table-column>
                         </div>
                     </el-table>
+                    <!--sta分页插件-->
+                    <div>
+                        <el-pagination
+                                @current-change="handleCurrentChange"
+                                background
+                                layout="prev, pager, next, total"
+                                :total="total">
+                        </el-pagination>
+                    </div>
+                    <!--end分页插件-->
                 </div>
                 <!--end订单列表-->
 
@@ -73,115 +91,34 @@
 </template>
 
 <script>
+    import moke from '../../../mock/api.js'
     export default {
         data() {
             return {
-                orders: [{
-                    oid: '订单的id',
-                    xsId: '悬赏表的id',
-                    lansquenet: '接单人的id',
-                    state: 1,
-                    showOne: 1,
-                    showTwo: 1,
-                    createTime: '2011-11-11 11:11:11',
-                    endTime: '2012-12-12 12:12:12',
-                    xs: {
-                        xsId: '悬赏表的id',
-                        brief: '帮买东西',
-                        context: '在大润发买五瓶矿泉水,好多好吃的',
-                        price: 11.11,
-                        createTime: '2011-11-11 11:11:11',
-                        endTime: '2012-12-12 12:12:12',
-                        state: 1,
-                        uid: '发布悬赏人的id',
-                        address: '520宿舍2号床',
-                        user: {
-                            nickname: '吴彦祖',
-                            phone: '13313131414'
-                        }
-                    }
-                }, {
-                    oid: '订单的id',
-                    xsId: '悬赏表的id',
-                    lansquenet: '接单人的id',
-                    state: 1,
-                    showOne: 1,
-                    showTwo: 1,
-                    createTime: '2011-11-11 11:11:11',
-                    endTime: '2012-12-12 12:12:12',
-                    xs: {
-                        xsId: '悬赏表的id',
-                        brief: '帮买东西',
-                        context: '在大润发买五瓶矿泉水,好多好吃的',
-                        price: 11.11,
-                        createTime: '2011-11-11 11:11:11',
-                        endTime: '2012-12-12 12:12:12',
-                        state: 1,
-                        uid: '发布悬赏人的id',
-                        address: '520宿舍2号床',
-                        user: {
-                            nickname: '吴彦祖',
-                            phone: '13313131414'
-                        }
-                    }
-                }, {
-                    oid: '订单的id',
-                    xsId: '悬赏表的id',
-                    lansquenet: '接单人的id',
-                    state: 1,
-                    showOne: 1,
-                    showTwo: 1,
-                    createTime: '2011-11-11 11:11:11',
-                    endTime: '2012-12-12 12:12:12',
-                    xs: {
-                        xsId: '悬赏表的id',
-                        brief: '帮买东西',
-                        context: '在大润发买五瓶矿泉水,好多好吃的',
-                        price: 11.11,
-                        createTime: '2011-11-11 11:11:11',
-                        endTime: '2012-12-12 12:12:12',
-                        state: 1,
-                        uid: '发布悬赏人的id',
-                        address: '520宿舍2号床',
-                        user: {
-                            nickname: '吴彦祖',
-                            phone: '13313131414'
-                        }
-                    }
-                }, {
-                    oid: '订单的id',
-                    xsId: '悬赏表的id',
-                    lansquenet: '接单人的id',
-                    state: 1,
-                    showOne: 1,
-                    showTwo: 1,
-                    createTime: '2011-11-11 11:11:11',
-                    endTime: '2012-12-12 12:12:12',
-                    xs: {
-                        xsId: '悬赏表的id',
-                        brief: '帮买东西',
-                        context: '在大润发买五瓶矿泉水,好多好吃的',
-                        price: 11.11,
-                        createTime: '2011-11-11 11:11:11',
-                        endTime: '2012-12-12 12:12:12',
-                        state: 1,
-                        uid: '发布悬赏人的id',
-                        address: '520宿舍2号床',
-                        user: {
-                            nickname: '吴彦祖',
-                            phone: '13313131414'
-                        }
-                    }
-                }]
+                pageRequest: {
+                    pageSize: 4,
+                    pageNum: 1,
+                    searchKey: ''
+                },
+                total: 0,
+                orders: []
             }
         },
         methods: {
-            handleSizeChange(val) {
-                console.log(`每页 ${val} 条`);
-            },
             handleCurrentChange(val) {
-                console.log(`当前页: ${val}`);
+                this.pageRequest.pageNum = val;
+                this.getAllOrder();
+            },
+            async getAllOrder() {
+                let {data} = await this.$axios.get("http://localhost:8080/order/getAllOrder", {
+                    param: this.pageRequest
+                })
+                console.log(data)
+                this.orders = data.data.orders;
             }
+        },
+        created() {
+            this.getAllOrder();
         }
     }
 </script>
