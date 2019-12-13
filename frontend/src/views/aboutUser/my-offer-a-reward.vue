@@ -1,15 +1,28 @@
 <template>
     <div>
-        <!-- todo 正在进行中的悬赏,用户是接单人,状态为1-->
+        <!-- todo 登录后,此页面查询悬赏数据,包括(可接状态,状态码1 or 已接状态,状态码2)-->
 
         <el-card class="box-card">
             <div style="margin-top: 15px;">
+                <div style="display: block">
+                    <el-switch
+                            style="display: block"
+                            v-model="inSwitch"
+                            active-color="#13ce66"
+                            inactive-color="#ff4949"
+                            active-text="已接"
+                            inactive-text="未接">
+                    </el-switch>
+                </div>
                 <!--sta搜索框-->
-                <el-input placeholder="搜索" v-model="pageRequest.searchKey" class="input-with-select">
-                    <el-button slot="append" type="primary" style="color: white;background-color: #1E89E0"
-                               icon="el-icon-search">搜索
-                    </el-button>
-                </el-input>
+                <div>
+                    <el-input style="width: 500px" placeholder="搜索" v-model="pageRequest.searchKey"
+                              class="input-with-select">
+                        <el-button slot="append" type="primary" style="color: white;background-color: #1E89E0"
+                                   icon="el-icon-search">搜索
+                        </el-button>
+                    </el-input>
+                </div>
                 <!--end搜索框-->
                 <!--sta订单列表-->
                 <div style="height: 900px">
@@ -80,8 +93,14 @@
                     <!--end分页插件-->
                 </div>
                 <!--end订单列表-->
+
             </div>
+
+
         </el-card>
+
+        <div>
+        </div>
     </div>
 </template>
 
@@ -91,8 +110,7 @@
     export default {
         data() {
             return {
-                value1: true,
-                value2: true,
+                inSwitch: false,
                 pageRequest: {
                     pageSize: 4,
                     pageNum: 1,

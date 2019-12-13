@@ -25,7 +25,8 @@
                                 <el-dropdown-menu slot="dropdown">
                                     <el-dropdown-item>个人信息</el-dropdown-item>
                                     <el-dropdown-item >历史订单</el-dropdown-item>
-                                    <el-dropdown-item>我的悬赏</el-dropdown-item>
+                                    <!--点击路由转发-->
+                                    <el-dropdown-item ><span @click.stop="$router.push('/home/reward')">我的悬赏</span></el-dropdown-item>
                                     <el-dropdown-item divided>退出登录</el-dropdown-item>
                                 </el-dropdown-menu>
                             </el-dropdown>

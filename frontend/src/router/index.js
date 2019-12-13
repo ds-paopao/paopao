@@ -27,6 +27,7 @@ const routes = [
                 component: () => import( '../views/list/index')
             },
             {
+                // 进行中的悬赏页面组件
                 path: '/home/oderList',
                 name: 'oderList',
                 component: () => import( '../views/oderList/index')
@@ -35,6 +36,12 @@ const routes = [
                 path: '/Addxs',
                 name: 'Addxs',
                 component: () => import( '../views/Addxs/index')
+            },
+            {
+                //我的悬赏,包括可接和已接
+                path: '/home/reward',
+                name: 'reward',
+                component: () => import( '../views/aboutUser/my-offer-a-reward.vue')
             }
         ]
     }
