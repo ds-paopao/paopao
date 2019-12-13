@@ -22,7 +22,7 @@
                             :default-expand-all="true">
                         <el-table-column type="expand">
                             <template slot-scope="order">
-                                <el-form label-position="left" inline class="demo-table-expand">
+                                <el-form label-position="right" inline class="demo-table-expand">
                                     <el-form-item label="订单详情">
                                         <span>{{ order.row.xs.context}}</span>
                                     </el-form-item>
@@ -41,6 +41,11 @@
                                     </el-form-item>
                                     <el-form-item label="悬赏用户电话">
                                         <span>{{ order.row.xs.user.phone }}</span>
+                                    </el-form-item>
+                                    <el-form-item  style=" margin-left: 700px;">
+                                        <span>
+                                            <el-button size="mini" type="success" round>确认送达</el-button>
+                                        </span>
                                     </el-form-item>
                                 </el-form>
                             </template>
