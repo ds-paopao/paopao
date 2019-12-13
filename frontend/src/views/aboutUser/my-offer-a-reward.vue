@@ -5,12 +5,12 @@
         <el-card class="box-card">
             <div style="margin-top: 15px;">
                 <el-switch
-                        style="display: block"
+                        style=" margin-right: 44px;"
                         v-model="inSwitch"
                         active-color="#13ce66"
                         inactive-color="#ff4949"
-                        active-text="已接"
-                        inactive-text="未接">
+                        active-text="已接订单"
+                        inactive-text="未接订单">
                 </el-switch>
                 <!--sta搜索框-->
                 <el-input style="width: 500px" placeholder="输入订单关键字" v-model="pageRequest.searchKey"
