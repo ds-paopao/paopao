@@ -9,8 +9,8 @@
                         v-model="inSwitch"
                         active-color="#13ce66"
                         inactive-color="#ff4949"
-                        active-text="已接订单"
-                        inactive-text="未接订单">
+                        active-text="已被接单"
+                        inactive-text="等待接单">
                 </el-switch>
                 <!--sta搜索框-->
                 <el-input style="width: 500px" placeholder="输入订单关键字" v-model="pageRequest.searchKey"
