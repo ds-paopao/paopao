@@ -4,25 +4,21 @@
 
         <el-card class="box-card">
             <div style="margin-top: 15px;">
-                <div style="display: block">
-                    <el-switch
-                            style="display: block"
-                            v-model="inSwitch"
-                            active-color="#13ce66"
-                            inactive-color="#ff4949"
-                            active-text="已接"
-                            inactive-text="未接">
-                    </el-switch>
-                </div>
+                <el-switch
+                        style="display: block"
+                        v-model="inSwitch"
+                        active-color="#13ce66"
+                        inactive-color="#ff4949"
+                        active-text="已接"
+                        inactive-text="未接">
+                </el-switch>
                 <!--sta搜索框-->
-                <div>
-                    <el-input style="width: 500px" placeholder="搜索" v-model="pageRequest.searchKey"
-                              class="input-with-select">
-                        <el-button slot="append" type="primary" style="color: white;background-color: #1E89E0"
-                                   icon="el-icon-search">搜索
-                        </el-button>
-                    </el-input>
-                </div>
+                <el-input style="width: 500px" placeholder="输入订单关键字" v-model="pageRequest.searchKey"
+                          class="input-with-select">
+                </el-input>
+                <el-button slot="append" type="primary" style="color: white;background-color: #1E89E0"
+                           icon="el-icon-search">搜索
+                </el-button>
                 <!--end搜索框-->
                 <!--sta订单列表-->
                 <div style="height: 900px">
