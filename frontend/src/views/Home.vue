@@ -89,6 +89,8 @@
             </div>
         </el-dialog>
         <!-- 登录组件 end -->
+
+
     </div>
 </template>
 
@@ -99,6 +101,7 @@
     import Login from '@/components/Login'
     import verifyCode from '@/components/VerifyCode.vue'
 
+
     export default {
         name: 'home',
         data() {
@@ -106,6 +109,7 @@
                 openLogin: false,
                 isLogin: false,
                 isCollapse: true,
+
                 user: {}
             }
         },
