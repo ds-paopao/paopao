@@ -1,7 +1,7 @@
 <template>
     <el-dialog
             title="我要一瓶王老吉"
-            :visible.sync="open"
+            :visible.sync="thisOpen"
             width="50%"
     >
         <el-row style="margin-bottom: 20px">
@@ -45,11 +45,11 @@
 
         watch:{
             thisOpen(){
-                console.log(this.thisOpen+"              thisOpen")
+
                 this.$emit("changes",this.thisOpen)
             },
             open(){
-                console.log(this.open+"              open")
+
                 this.thisOpen = this.open;
             }
         }

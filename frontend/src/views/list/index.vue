@@ -38,7 +38,7 @@
                                     <el-row style="height: 100px">
 
                                     </el-row>
-                                    <el-button type="primary" icon="el-icon-goods" class="button">查看悬赏</el-button>
+                                    <el-button type="primary" icon="el-icon-goods" @click="thisOpen = true" class="button">查看悬赏</el-button>
 
                                 </el-col>
                             </el-row>
@@ -65,10 +65,15 @@
 
 
         </el-card>
+
+        <xsinfo :open="thisOpen" @changes="chengOpen"></xsinfo>
     </div>
 </template>
 
 <script>
+    import xsinfo from '@/components/xsinfo/daiog.vue'
+
+
     export default {
         name: "index"
         ,
@@ -78,11 +83,19 @@
             },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
+            },
+            chengOpen(val){
+                this.thisOpen = val;
             }
         }, data() {
             return {
-                key: ''
+                key: '',
+                thisOpen:false
+
             }
+        },
+        components:{
+            xsinfo
         }
 
     }
