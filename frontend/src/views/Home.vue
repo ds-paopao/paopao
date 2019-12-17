@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <el-container>
+        <el-container  ref="homePage">
             <el-container>
                 <el-header>
                     <el-row>
@@ -42,12 +42,15 @@
 
                 <el-main>
                     <router-view/>
+                    <el-footer>
+                        @paopao<br/>
+                        <div>传智专修学院Java34班</div>
+                    </el-footer>
                 </el-main>
 
-                <el-footer>
-                    Footer
-                </el-footer>
+
             </el-container>
+
             <!-- <el-aside width="50px" style="z-index: 100">
                  <div style="height: 40%"></div>
                  <div class="car" @click="clickOpen">
@@ -109,6 +112,7 @@
                 openLogin: false,
                 isLogin: false,
                 isCollapse: true,
+                clientHeight:'',
 
                 user: {}
             }
@@ -140,6 +144,11 @@
             },
             changLogin(val) {
                 this.isLogin = val;
+            },
+            changeFixed(clientHeight){ //动态修改样式
+                // console.log(clientHeight);
+                // console.log(this.$refs.homePage.$el.style.height);
+                this.$refs.homePage.$el.style.height = clientHeight-20+'px';
             }
         },
         components: {
@@ -147,6 +156,20 @@
             menus: menu,
             'scroll-top': ScrollTop,
             verifyCode
+        }, mounted(){
+            // 获取浏览器可视区域高度
+            this.clientHeight =   `${document.documentElement.clientHeight}`
+            //document.body.clientWidth;
+            //console.log(self.clientHeight);
+            window.onresize = function temp() {
+                this.clientHeight = `${document.documentElement.clientHeight}`;
+            };
+        },
+        watch: {
+            // 如果 `clientHeight` 发生改变，这个函数就会运行
+            clientHeight: function () {
+                this.changeFixed(this.clientHeight)
+            }
         }
     }
 </script>
@@ -206,7 +229,10 @@
         line-height: 60px;
     }
 
-
+    .el-footer {
+        background-color: #F5F6F5;
+        color: #333;
+    }
     .el-menu {
         margin-left: -1%;
         width: 400px;

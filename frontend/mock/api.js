@@ -22,7 +22,7 @@ import Mock from 'mockjs'
                 endTime: '2012-12-12 12:12:12',
                 productphoto:{
                     oid:'123',
-                    photoUrl:"@/assets/logo.png"
+                    photoUrl:"@/assets/favicon.ico"
                 },
                 xs: {
                     xsId: '悬赏表的id',
