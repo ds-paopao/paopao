@@ -1,6 +1,6 @@
 package com.czxy.paopao.controller;
 
-import com.czxy.paopao.commons.vo.ResponseResult;
+import com.czxy.paopao.commons.dto.ResponseResult;
 import com.czxy.paopao.domain.User;
 import com.czxy.paopao.service.UserService;
 import org.apache.dubbo.config.annotation.Reference;

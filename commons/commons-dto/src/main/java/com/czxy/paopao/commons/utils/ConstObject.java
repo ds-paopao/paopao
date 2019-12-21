@@ -1,6 +1,7 @@
 package com.czxy.paopao.commons.utils;
 
-import com.czxy.paopao.commons.vo.ResponseResult;
+import com.czxy.paopao.commons.dto.CommonsCode;
+import com.czxy.paopao.commons.dto.ResponseResult;
 
 import java.util.HashMap;
 import java.util.Map;

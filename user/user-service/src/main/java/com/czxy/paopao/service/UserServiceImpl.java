@@ -1,10 +1,10 @@
 package com.czxy.paopao.service;
 
-import com.czxy.paopao.commons.utils.CommonsCode;
+import com.czxy.paopao.commons.dto.CommonsCode;
 import com.czxy.paopao.commons.utils.ConstObject;
 import com.czxy.paopao.commons.utils.SendSms;
 import com.czxy.paopao.commons.utils.util;
-import com.czxy.paopao.commons.vo.ResponseResult;
+import com.czxy.paopao.commons.dto.ResponseResult;
 import com.czxy.paopao.domain.User;
 import org.apache.dubbo.config.annotation.Service;
 import javax.annotation.Resource;

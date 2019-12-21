@@ -1,8 +1,7 @@
 package com.czxy.paopao.service;
 
 
-import com.czxy.paopao.commons.utils.CommonsCode;
-import com.czxy.paopao.commons.vo.ResponseResult;
+import com.czxy.paopao.commons.dto.ResponseResult;
 import com.czxy.paopao.mapper.PermissionMapper;
 import org.apache.dubbo.config.annotation.Service;
 

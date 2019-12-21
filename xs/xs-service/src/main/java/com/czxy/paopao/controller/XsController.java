@@ -1,7 +1,7 @@
 package com.czxy.paopao.controller;
 
-import com.czxy.paopao.commons.utils.CommonsCode;
-import com.czxy.paopao.commons.vo.ResponseResult;
+import com.czxy.paopao.commons.dto.CommonsCode;
+import com.czxy.paopao.commons.dto.ResponseResult;
 import com.czxy.paopao.commons.dto.xs.XsInfo;
 import com.czxy.paopao.commons.dto.xs.reqPage;
 import com.czxy.paopao.domain.PpXuanshang;

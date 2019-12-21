@@ -1,6 +1,5 @@
-package com.czxy.paopao.commons.vo;
+package com.czxy.paopao.commons.dto;
 
-import com.czxy.paopao.commons.utils.CommonsCode;
 import lombok.Data;
 
 import java.io.Serializable;

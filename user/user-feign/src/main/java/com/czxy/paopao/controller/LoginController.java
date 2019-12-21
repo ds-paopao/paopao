@@ -2,7 +2,9 @@ package com.czxy.paopao.controller;
 
 import com.czxy.paopao.commons.dto.LoginInfo;
 import com.czxy.paopao.commons.dto.LoginParam;
-import com.czxy.paopao.commons.vo.ResponseResult;
+import com.czxy.paopao.commons.dto.ResponseResult;
+import com.czxy.paopao.commons.utils.MapperUtils;
+import com.czxy.paopao.commons.utils.OkHttpClientUtil;
 import com.google.common.collect.Maps;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,14 +36,19 @@ public class LoginController {
 
     @Value("${business.oauth2.grant_type}")
     public String oauth2GrantType;
+
     @Value("${business.oauth2.client_id}")
     public String oauth2ClientId;
+
     @Value("${business.oauth2.client_secret}")
     public String oauth2ClientSecret;
+
     @Resource(name = "userDetailsServiceBean")
     public UserDetailsService userDetailsService;
+
     @Resource
     public BCryptPasswordEncoder passwordEncoder;
+
     @Resource
     public TokenStore tokenStore;
 
