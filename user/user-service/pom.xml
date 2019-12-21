@@ -12,6 +12,12 @@
     <artifactId>user-service</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.czxy</groupId>
+            <artifactId>commons-dto</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

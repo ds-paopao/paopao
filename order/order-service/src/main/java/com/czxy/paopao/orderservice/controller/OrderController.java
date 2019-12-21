@@ -1,6 +1,6 @@
 package com.czxy.paopao.orderservice.controller;
 
-import com.czxy.paopao.commons.dto.ResponseResult;
+import com.czxy.paopao.commons.vo.ResponseResult;
 import com.czxy.paopao.commons.dto.order.OrderInfo;
 import com.czxy.paopao.orderservice.domain.PpOrder;
 import com.czxy.paopao.orderservice.service.PpOrderService;

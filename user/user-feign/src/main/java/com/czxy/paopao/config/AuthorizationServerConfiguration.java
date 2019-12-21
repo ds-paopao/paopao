@@ -1,5 +1,4 @@
-package com.czxy.paopao.configure;
-
+package com.czxy.paopao.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,8 +12,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
-
-
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
@@ -23,7 +20,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Autowired
     private AuthenticationManager authenticationManager;
     // 增加 TokenStore 配置
-    //
     @Bean
     public TokenStore tokenStore() {
         return new InMemoryTokenStore();

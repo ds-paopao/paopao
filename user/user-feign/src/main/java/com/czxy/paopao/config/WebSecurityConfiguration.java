@@ -1,6 +1,6 @@
-package com.czxy.paopao.configure;
+package com.czxy.paopao.config;
 
-
+import com.czxy.paopao.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,9 +11,9 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-
 @Configuration
 @EnableWebSecurity
 // 增加了资源服务器配置
@@ -22,18 +22,15 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-        //添加密码加密组件
         return new BCryptPasswordEncoder();
     }
- /*   @Bean
+    @Bean
     @Override
     public UserDetailsService userDetailsServiceBean() throws Exception {
-        //创建user对象接口
         return new UserDetailsServiceImpl();
-    }*/
+    }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
         auth.userDetailsService(userDetailsServiceBean());
     }
     @Bean
@@ -43,7 +40,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
     @Override
     public void configure(WebSecurity web) throws Exception {
-        //排除需要校验的路径
         web.ignoring()
                 .antMatchers("/user/login");
     }
@@ -54,8 +50,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                // 增加了授权访问配置 (配置该路径只能由USER权限访问)
+                // 增加了授权访问配置
                 .antMatchers("/user/info").hasAuthority("USER")
                 .antMatchers("/user/logout").hasAuthority("USER");
     }
+
+
 }

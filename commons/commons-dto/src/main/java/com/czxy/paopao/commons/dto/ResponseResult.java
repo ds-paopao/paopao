@@ -1,5 +1,6 @@
-package com.czxy.paopao.commons.dto;
+package com.czxy.paopao.commons.vo;
 
+import com.czxy.paopao.commons.utils.CommonsCode;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -19,9 +20,11 @@ public class ResponseResult<T> implements Serializable {
      * 返回对象
      */
     private T data;
+
     public ResponseResult() {
         super();
     }
+
     public ResponseResult(Integer state) {
         super();
         this.state = state;
@@ -36,9 +39,10 @@ public class ResponseResult<T> implements Serializable {
         this.state = state;
         this.message = throwable.getMessage();
     }
-    public ResponseResult(Integer state, T data) {
+
+    public ResponseResult(T data) {
         super();
-        this.state = state;
+        this.state = CommonsCode.ok;
         this.data = data;
     }
     public ResponseResult(Integer state, String message, T data) {
